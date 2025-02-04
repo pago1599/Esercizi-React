@@ -1,14 +1,11 @@
-import Hello from "./Hello";
-import { Message } from "./Message";
+import Welcome from "./Welcome";
 
-export function App() {
+const App = () => {
   return (
     <div>
-      <Hello />
-      <Hello />
-      <Message />
+      <Welcome name="Fabio" />
     </div>
   );
-}
+};
 
 export default App;
