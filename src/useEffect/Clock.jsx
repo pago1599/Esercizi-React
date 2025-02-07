@@ -2,13 +2,13 @@ import React from "react";
 import { useState, useEffect } from "react";
 
 export function Clock() {
-  const currentTime = setInterval(() => {
-    setTime(new Date().toLocaleTimeString());
-  }, 1000);
-  const [time, setTime] = useState(currentTime);
+  const [time, setTime] = useState(new Date().toLocaleTimeString());
 
   useEffect(() => {
-    currentTime;
+    const interval = setInterval(() => {
+      setTime(new Date().toLocaleTimeString());
+    }, 1000);
+    return () => clearInterval(interval);
   }, []);
 
   return (
