@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import { CounterDisplay } from "./CounterDisplay";
 
 function Counter({ initialValue, incrementAmount }) {
-  const [counter, setCounter] = useState(0);
+  const [counter, setCounter] = useState(initialValue);
 
   const handleIncrement = () => {
-    setCounter((count) => count + incrementAmount);
+    setCounter((prevCount) => prevCount + incrementAmount);
   };
 
   const handleDecrement = () => {
-    setCounter((count) => count - incrementAmount);
+    setCounter((prevCount) => prevCount - incrementAmount);
   };
 
   const handleReset = () => {
