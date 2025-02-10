@@ -1,10 +1,10 @@
 import React from "react";
 
-const handleClickBtn1 = () => {
+const handleClickBtn1 = (event) => {
   console.log(event.target.name);
 };
 
-const handleClickBtn2 = () => {
+const handleClickImg = (event) => {
   console.log(event.target.src);
 };
 
@@ -17,7 +17,7 @@ function MouseClicker() {
       <hr />
       <button name="two">
         <img
-          onClick={handleClickBtn2}
+          onClick={handleClickImg}
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkiUJfNHsvJD7T-imSNpnjYkZ_PKVLSuX3gw&s"
           width={35}
         />
