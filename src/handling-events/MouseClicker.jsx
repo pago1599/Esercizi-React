@@ -1,21 +1,22 @@
 import React from "react";
 
-const handleClickBtn1 = (event) => {
+const handleClickBtn = (event) => {
   console.log(event.target.name);
 };
 
 const handleClickImg = (event) => {
   console.log(event.target.src);
+  event.stopPropagation();
 };
 
 function MouseClicker() {
   return (
     <div>
-      <button onClick={handleClickBtn1} name="one">
+      <button onClick={handleClickBtn} name="one">
         UNO
       </button>
       <hr />
-      <button name="two">
+      <button onClick={handleClickBtn} name="two">
         <img
           onClick={handleClickImg}
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkiUJfNHsvJD7T-imSNpnjYkZ_PKVLSuX3gw&s"
