@@ -13,7 +13,7 @@ function FocusableInput() {
     } else {
       console.log("Secondo montaggio");
     }
-    inputRef.current?.focus();
+    inputRef.current.focus();
   }, []);
 
   return (
