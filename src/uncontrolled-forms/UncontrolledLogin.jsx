@@ -16,7 +16,7 @@ function UncontrolledLogin() {
   const loginWithFormData = (event) => {
     event.preventDefault();
 
-    const formData = new FormData(event.target.form);
+    const formData = new FormData(event.target.form); // new FormData(document.querySelector("form"))
 
     const data = {
       username: formData.get("username"),
@@ -52,7 +52,9 @@ function UncontrolledLogin() {
         <input type="checkbox" name="session" /> Remember me
       </label>
 
-      <button className="bg-blue-500 text-white">Login</button>
+      <button type="submit" className="bg-blue-500 text-white">
+        Login
+      </button>
       <button type="button" onClick={loginWithFormData} className="bg-blue-300">
         Login with FormData
       </button>

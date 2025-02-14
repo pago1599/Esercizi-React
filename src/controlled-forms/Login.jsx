@@ -37,7 +37,7 @@ export default function Login({ onLogin }) {
         <label>Password:</label>
         <input
           className="border-2 border-gray-300"
-          type="text"
+          type="password"
           value={password}
           onChange={handlePassword}
           placeholder="Enter password"
