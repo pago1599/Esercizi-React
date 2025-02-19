@@ -22,7 +22,7 @@ function TodoList() {
     setTodos(list);
   };
   return (
-    <div className="flex flex-col gap-2">
+    <form className="flex flex-col gap-2">
       <ul className="list-disc">
         {todos.map((todo, index) => (
           <React.Fragment key={index}>
@@ -50,7 +50,7 @@ function TodoList() {
       <button className="bg-gray-500 rounded text-white" onClick={resetTodos}>
         Reset
       </button>
-    </div>
+    </form>
   );
 }
 
