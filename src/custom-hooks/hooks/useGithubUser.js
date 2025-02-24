@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 
 export function useGithubUser(username) {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState({});
 
   useEffect(() => {
     if (username) {

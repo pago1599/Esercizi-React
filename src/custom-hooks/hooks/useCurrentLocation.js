@@ -11,12 +11,10 @@ const useCurrentLocation = () => {
     setLocation(null);
 
     if (!navigator.geolocation) {
-      setError("Non supportato");
+      setError("Not supported");
       setLoading(false);
       return;
     }
-
-    setLoading(true);
 
     // Success callback
     const success = (position) => {

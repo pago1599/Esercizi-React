@@ -2,7 +2,7 @@ import React from "react";
 import { useForm } from "./hooks/useForm";
 
 function ControlledForm() {
-  const { username, password, handleUsername, handlePassword } = useForm("");
+  const { username, password, handleUsername, handlePassword } = useForm();
   return (
     <form className="flex gap-2">
       <input
