@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useRef } from "react";
 import { useState } from "react";
 
 export default function ChatApp() {
@@ -20,6 +22,16 @@ export default function ChatApp() {
     }, 1000);
   };
 
+  const messagesEndRef = useRef(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
   return (
     <div className="flex flex-col w-150 h-150 bg-gray-100 p-4 rounded-lg">
       <div className="flex-1 overflow-y-auto space-y-2 p-4 border rounded-lg bg-white">
@@ -35,7 +47,9 @@ export default function ChatApp() {
             {msg.text}
           </div>
         ))}
+        <div ref={messagesEndRef} />
       </div>
+
       <div className="flex mt-4">
         <input
           type="text"
