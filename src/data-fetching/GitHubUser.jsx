@@ -15,15 +15,15 @@ function GitHubUser({ username }) {
   }, [username]);
 
   if (!data) {
-    return `Utente non trovato`;
+    return `User not found`;
   }
 
   return (
-    <div>
+    <li>
       <h2>{data?.name}</h2>
       <p>{data?.login}</p>
       <img src={data?.avatar_url} alt="avatar" width="100" />
-    </div>
+    </li>
   );
 }
 
