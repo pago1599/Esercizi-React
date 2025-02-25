@@ -32,6 +32,12 @@ export default function ChatApp() {
     scrollToBottom();
   }, [messages]);
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      sendMessage();
+    }
+  };
+
   return (
     <div className="flex flex-col w-150 h-150 bg-gray-100 p-4 rounded-lg">
       <div className="flex-1 overflow-y-auto space-y-2 p-4 border rounded-lg bg-white">
@@ -55,6 +61,7 @@ export default function ChatApp() {
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
+          onKeyDown={handleKeyDown}
           className="flex-1 p-2 border rounded-lg"
           placeholder="Type a message..."
         />
