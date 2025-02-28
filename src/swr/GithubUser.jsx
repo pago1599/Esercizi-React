@@ -8,13 +8,13 @@ function GithubUser({ username }) {
     fetcher
   );
 
-  function fetchgithubUser() {
+  function fetchGithubUser() {
     mutate();
   }
 
   return (
     <div className="flex flex-col gap-2 justify-center items-center">
-      <button className="bg-gray-300 p-2 rounded-lg" onClick={fetchgithubUser}>
+      <button className="bg-gray-300 p-2 rounded-lg" onClick={fetchGithubUser}>
         Reload user data
       </button>
       {isLoading && <h1>Loading...</h1>}
