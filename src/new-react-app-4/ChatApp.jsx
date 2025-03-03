@@ -1,40 +1,39 @@
-import { useEffect } from "react";
-import { useRef } from "react";
-import { useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import useBot from "./hooks/useBot";
 
 export default function ChatApp() {
-  const { data, mutate } = useBot();
-
   const [messages, setMessages] = useState([
     { text: "Hello! How can I help you?", sender: "bot" },
   ]);
+
   const [input, setInput] = useState("");
+  const [userMessage, setUserMessage] = useState("");
+
+  const { data, isLoading, error, mutate } = useBot(userMessage);
 
   const sendMessage = () => {
     if (input.trim() === "") return;
-    const newMessage = { text: input, sender: "user" };
-    setMessages([...messages, newMessage]);
 
+    const newMessage = { text: input, sender: "user" };
+    setMessages((prev) => [...prev, newMessage]);
+
+    setUserMessage(input); // Passa l'input dell'utente all'API
     setInput("");
 
-    setTimeout(() => {
-      setMessages((prev) => [
-        ...prev,
-        { text: "I'm just a bot!", sender: "bot" },
-      ]);
-    }, 1000);
-    mutate();
+    mutate(); // Attiva la richiesta API
   };
+
+  // Quando `data` cambia, aggiungiamo la risposta del bot
+  useEffect(() => {
+    if (data) {
+      setMessages((prev) => [...prev, { text: data, sender: "bot" }]);
+    }
+  }, [data]);
 
   const messagesEndRef = useRef(null);
 
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
   useEffect(() => {
-    scrollToBottom();
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
   const handleKeyDown = (e) => {
@@ -58,6 +57,8 @@ export default function ChatApp() {
             {msg.text}
           </div>
         ))}
+        {isLoading && <div className="text-gray-500">Bot is typing...</div>}
+        {error && <div className="text-red-500">Error: {error.message}</div>}
         <div ref={messagesEndRef} />
       </div>
 
